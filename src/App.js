@@ -20,7 +20,7 @@ function App() {
   //debounse useEffect
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   useEffect(() => {
-      fetchBeers(apiFilters + searchTerm, paginationSize, currentPage);
+    fetchBeers(apiFilters + searchTerm, paginationSize, currentPage);
   }, [debouncedSearchTerm]);
 
   // filters useEffect
@@ -33,13 +33,12 @@ function App() {
     paginationSize = "10",
     currentPage = "1"
   ) {
-    console.log("filters:", apiFilters, paginationSize, currentPage);
     const request = await fetch(
       `https://api.punkapi.com/v2/beers?page=${currentPage}&per_page=${paginationSize}${apiFilters}`
     );
     const response = await request.json();
     setData(response);
-    console.log("api request");
+
     return request;
   }
 

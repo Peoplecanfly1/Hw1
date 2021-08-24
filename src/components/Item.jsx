@@ -3,7 +3,7 @@ import "../styles/item.css";
 const Item = function ({ beer }) {
   return (
     <div className="card mb-3 m-2">
-      <h5 class="card-title">{beer.name}</h5>
+      <h5 className="card-title">{beer.name}</h5>
       <img src={beer.image_url} alt="beer" className="card-pic"></img>
 
       <div className="card-body">
