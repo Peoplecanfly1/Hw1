@@ -4,7 +4,12 @@ import "../styles/pagination.css";
 
 const options = [10, 20, 30, 40, 50];
 
-const Pagination = ({ paginationHandler, currentPageHandler, currentPage }) => {
+const Pagination = ({
+  paginationHandler,
+  currentPageHandler,
+  currentPage,
+  isLastPage,
+}) => {
   const changeHandler = (e) => {
     paginationHandler(e);
   };
@@ -33,7 +38,7 @@ const Pagination = ({ paginationHandler, currentPageHandler, currentPage }) => {
         >
           Back
         </button>
-        <button onClick={clickForward} className="btn btn-success btn-sm">
+        <button onClick={clickForward} disabled={isLastPage} className="btn btn-success btn-sm">
           Forward
         </button>
       </div>

@@ -55,7 +55,7 @@ const Filters = function ({ getApiFilters, setCurrentPage }) {
       }
     });
     setCurrentPage( prevState => 1)  
-    getApiFilters(resultArray.join(""));
+    getApiFilters(resultArray);
   };
 
   return (

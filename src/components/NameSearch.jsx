@@ -8,9 +8,9 @@ const NameSearch = ({ setSearchTerm }) => {
         placeholder="Input beer titile"
         onChange={(e) => {
           if (e.target.value === "") {
-            setSearchTerm("");
+            setSearchTerm([]);
           } else {
-            setSearchTerm(`&beer_name=${e.target.value}`);
+            setSearchTerm([`&beer_name=${e.target.value}`]);
           }
         }}
       />
