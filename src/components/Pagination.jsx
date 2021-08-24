@@ -1,28 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/pagination.css";
 
 const options = [10, 20, 30, 40, 50];
 
-const Pagination = ({ paginationHandler, currentPageHandler }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-
+const Pagination = ({ paginationHandler, currentPageHandler, currentPage }) => {
   const changeHandler = (e) => {
     paginationHandler(e);
   };
 
   const clickBack = () => {
-    if (currentPage <= 1) {
-      currentPageHandler(1);
-    } else {
-      setCurrentPage(currentPage - 1);
-      currentPageHandler(currentPage - 1);
-    }
+    currentPageHandler(false);
   };
 
   const clickForward = () => {
-    setCurrentPage(currentPage + 1);
-    currentPageHandler(currentPage + 1);
+    currentPageHandler(true);
   };
 
   return (
@@ -34,7 +26,11 @@ const Pagination = ({ paginationHandler, currentPageHandler }) => {
         ))}
       </select>
       <div className="pagination-buttons">
-        <button onClick={clickBack} className="btn btn-success btn-sm">
+        <button
+          onClick={clickBack}
+          className="btn btn-success btn-sm"
+          disabled={currentPage === 1 ? true : false}
+        >
           Back
         </button>
         <button onClick={clickForward} className="btn btn-success btn-sm">

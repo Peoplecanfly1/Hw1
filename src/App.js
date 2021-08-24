@@ -14,6 +14,7 @@ function App() {
   const [apiFilters, setApiFilters] = useState("");
   const [paginationSize, setPaginationSize] = useState("10");
   const [currentPage, setCurrentPage] = useState(1);
+
   // debounce states
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -38,7 +39,7 @@ function App() {
     );
     const response = await request.json();
     setData(response);
-
+    console.log('request')
     return request;
   }
 
@@ -46,18 +47,25 @@ function App() {
     setPaginationSize(e.target.value);
   };
 
-  const currentPageHandler = (page) => {
-    setCurrentPage(page);
+  const currentPageHandler = (direction) => {
+    if (direction) { // if true  + 1 page else - 1 page
+      setCurrentPage(currentPage + 1);
+    } else {setCurrentPage(currentPage - 1 )}
   };
 
   return (
     <div className="App">
       <h3>Beer wiki</h3>
+
       <NameSearch setSearchTerm={setSearchTerm}></NameSearch>
-      <Filters getApiFilters={setApiFilters}></Filters>
+      <Filters
+        getApiFilters={setApiFilters}
+        setCurrentPage={setCurrentPage}
+      ></Filters>
       <Pagination
         paginationHandler={paginationHandler}
         currentPageHandler={currentPageHandler}
+        currentPage={currentPage}
       ></Pagination>
       {data.length ? (
         <Items beers={data} />
