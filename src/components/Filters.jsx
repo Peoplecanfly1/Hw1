@@ -26,14 +26,12 @@ const Filters = function ({ getApiFilters, setCurrentPage }) {
 
   const inputStatus = function (data) {
     setInputFilters((prevState) => {
-      // existing sortfield was cleaned up
       if (data.value === "") {
         const sameElement = prevState.find((item) => item.name === data.name);
         const index = prevState.indexOf(sameElement);
         return [...prevState.splice(1, index)];
       }
 
-      // item changed or new item
       const filtered = prevState.filter((item) => item.name !== data.name);
 
       if (filtered.length === prevState.length) {
@@ -54,7 +52,7 @@ const Filters = function ({ getApiFilters, setCurrentPage }) {
         return `&${item.name}=${item.value}`;
       }
     });
-    setCurrentPage( prevState => 1)  
+    setCurrentPage((prevState) => 1);
     getApiFilters(resultArray);
   };
 

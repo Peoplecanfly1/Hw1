@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 
 const Filter = function ({ params, inputStatus }) {
   const [inputValue, setInputValue] = useState();
-  
 
-  // если кнопку нажали переносим значение инпутов в состояние
   const changeHandler = (e) => {
-    
     setInputValue(e.target.value);
   };
 
   useEffect(() => {
-    if ( inputValue ) {
-      const result = { name: params.name , value: inputValue, type: params.type };
+    if (inputValue) {
+      const result = {
+        name: params.name,
+        value: inputValue,
+        type: params.type,
+      };
       inputStatus(result);
-    }
-    else if(inputValue === ''){
-      inputStatus({name: params.name, value: ''})
+    } else if (inputValue === "") {
+      inputStatus({ name: params.name, value: "" });
     }
   }, [inputValue]);
 

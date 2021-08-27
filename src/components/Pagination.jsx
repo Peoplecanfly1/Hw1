@@ -38,7 +38,11 @@ const Pagination = ({
         >
           Back
         </button>
-        <button onClick={clickForward} disabled={isLastPage} className="btn btn-success btn-sm">
+        <button
+          onClick={clickForward}
+          disabled={isLastPage}
+          className="btn btn-success btn-sm"
+        >
           Forward
         </button>
       </div>
