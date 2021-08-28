@@ -1,4 +1,3 @@
-import "../styles/filtersWrapper.css";
 import Filter from "./Filter";
 import React, { useState } from "react";
 
