@@ -25,9 +25,11 @@ const Filters = function ({ getApiFilters, setCurrentPage }) {
 
   const inputStatus = function (data) {
     setInputFilters((prevState) => {
+      console.log(data, prevState)
       if (data.value === "") {
         const sameElement = prevState.find((item) => item.name === data.name);
         const index = prevState.indexOf(sameElement);
+        // думаю вместо двух методов можно было findIndex использовать
         return [...prevState.splice(1, index)];
       }
 
@@ -51,7 +53,7 @@ const Filters = function ({ getApiFilters, setCurrentPage }) {
         return `&${item.name}=${item.value}`;
       }
     });
-    setCurrentPage((prevState) => 1);
+    setCurrentPage((prevState) => 1); // тебе тут вроде не нужен prevState, можно его убрать
     getApiFilters(resultArray);
   };
 

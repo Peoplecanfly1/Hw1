@@ -12,7 +12,7 @@ import "./App.css";
 function App() {
   const [data, setData] = useState([]);
   const [apiFilters, setApiFilters] = useState([]);
-  const [paginationSize, setPaginationSize] = useState("10");
+  const [paginationSize, setPaginationSize] = useState("10"); // я бы придерживался использования number везде, строки тут только мешают
   const [currentPage, setCurrentPage] = useState(1);
 
   const [searchTerm, setSearchTerm] = useState([]);
